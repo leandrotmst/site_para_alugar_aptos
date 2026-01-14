@@ -5,30 +5,51 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Apartamento',
+            name="Apartamento",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('nome', models.CharField(max_length=100)),
-                ('descricao', models.TextField()),
-                ('preco_diaria', models.DecimalField(decimal_places=2, max_digits=10)),
-                ('foto_principal', models.ImageField(upload_to='apartamentos/')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("nome", models.CharField(max_length=100)),
+                ("descricao", models.TextField()),
+                ("preco_diaria", models.DecimalField(decimal_places=2, max_digits=10)),
+                ("foto_principal", models.ImageField(upload_to="apartamentos/")),
             ],
         ),
         migrations.CreateModel(
-            name='Indisponibilidade',
+            name="Indisponibilidade",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('data_inicio', models.DateField()),
-                ('data_fim', models.DateField()),
-                ('apartamento', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='bloqueios', to='apartamentos.apartamento')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("data_inicio", models.DateField()),
+                ("data_fim", models.DateField()),
+                (
+                    "apartamento",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="bloqueios",
+                        to="apartamento.apartamento",
+                    ),
+                ),
             ],
         ),
     ]

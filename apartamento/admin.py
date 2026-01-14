@@ -11,7 +11,7 @@ class IndisponibilidadeInline(admin.TabularInline):
 
 
 class ApartamentoAdmin(admin.ModelAdmin):
-    list_display = ["nome", "descricao", "diaria"]
+    list_display = ["nome", "descricao", "preco_diaria"]
     inlines = [IndisponibilidadeInline]
 
 

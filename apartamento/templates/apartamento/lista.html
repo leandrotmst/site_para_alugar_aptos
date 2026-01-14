@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% load omfilters %} {% block titulo %}Apartamentos |
+{% extends 'base.html' %}  {% block titulo %}Apartamentos |
 {% endblock %} {% block conteudo %}
 
 <div class="row">
@@ -7,11 +7,11 @@
       {% for apartamento in apartamentos %}
 
       <div class="card">
-        {% if apartamento.imagem %}
+        {% if apartamento.foto_principal %}
         <a href="{% url 'apartamento:detalhe' apartamento.slug %}">
           <img
             class="card-img-top"
-            src="{{ apartamento.imagem.url }}"
+            src="{{ apartamento.foto_principal.url }}"
             alt="{{ apartamento.nome }}"
           />
         </a>
