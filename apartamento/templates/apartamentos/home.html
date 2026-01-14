@@ -1,0 +1,48 @@
+{% extends 'apartamentos/base.html' %} {% block content %}
+<h2 class="text-3xl font-bold mb-8 text-center text-blue-800">
+  Escolha seu destino na praia
+</h2>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+  {% for apto in apartamentos %}
+  <div
+    class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-2xl transition-shadow duration-300"
+  >
+    {% if apto.foto_principal %}
+    <img
+      src="{{ apto.foto_principal.url }}"
+      alt="{{ apto.nome }}"
+      class="w-full h-48 object-cover"
+    />
+    {% else %}
+    <div
+      class="w-full h-48 bg-gray-200 flex items-center justify-center text-gray-400"
+    >
+      Sem foto
+    </div>
+    {% endif %}
+
+    <div class="p-6">
+      <h3 class="text-xl font-bold mb-2">{{ apto.nome }}</h3>
+      <p class="text-gray-600 text-sm mb-4 line-clamp-2">
+        {{ apto.descricao }}
+      </p>
+      <div class="flex justify-between items-center">
+        <span class="text-blue-600 font-bold text-lg"
+          >R$ {{ apto.preco_diaria }}/noite</span
+        >
+        <a
+          href="#"
+          class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700"
+          >Ver Datas</a
+        >
+      </div>
+    </div>
+  </div>
+  {% empty %}
+  <p class="text-center col-span-3 text-gray-500">
+    Nenhum apartamento cadastrado ainda no Admin.
+  </p>
+  {% endfor %}
+</div>
+{% endblock %}
