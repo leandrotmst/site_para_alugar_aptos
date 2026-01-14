@@ -7,7 +7,7 @@ from . import models
 
 class ListaApartamentos(ListView):
     model = models.Apartamento
-    template_name = "apartamentos/lista.html"
+    template_name = "apartamento/lista.html"
     context_object_name = "apartamentos"
     paginate_by = 10
     ordering = ["-id"]
@@ -35,6 +35,6 @@ class Busca(ListaApartamentos):
 
 class DetalheApartamento(DetailView):
     model = models.Apartamento
-    template_name = "apartamentos/detalhe.html"
-    context_object_name = "apartamentos"
+    template_name = "apartamento/detalhe.html"
+    context_object_name = "apartamento"
     slug_url_kwarg = "slug"
