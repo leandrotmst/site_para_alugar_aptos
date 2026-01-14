@@ -60,30 +60,42 @@ cd site_para_alugar_aptos
 
 # Linux/Mac
 
+```bash
 python3.14 -m venv venv 
 source venv/bin/activate
+```
 
 # Windows
 
+```bash
 python -m venv venv 
 venv\Scripts\activate
+```
 
 3. Instale as dependências Bash
 
+```bash
 pip install -r requirements.txt
+```
 
 4. Configure o Banco de Dados Bash
 
+```bash
 python manage.py migrate
+```
 
 5. Crie um Superusuário (Admin) Bash
 
+```bash
 python manage.py createsuperuser
+```
 
 6. Inicie o Servidor Bash
 
+```bash
 python manage.py runserver 
 Acesse o projeto em: http://127.0.0.1:8000/
+```
 
 📂 Estrutura do Projeto siteaptos/: Configurações principais do projeto
 (Settings, URLS globais).
