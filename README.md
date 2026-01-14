@@ -52,7 +52,7 @@ Siga os passos abaixo para configurar o ambiente de desenvolvimento:
 ### 1. Clone o repositório
 
 ```bash
-git clone [https://github.com/SEU-USUARIO/site_aptos.git](https://github.com/SEU-USUARIO/site_aptos.git)
+git clone [https://github.com/leandrotmst/site_para_aluar_aptos.git](https://github.com/leandrotmst/site_para_alugar_aptos.git)
 cd site_aptos
 ```
 
