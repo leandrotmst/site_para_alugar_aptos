@@ -1,6 +1,6 @@
 # 🏖️ Praia & Conforto - Plataforma de Aluguel de Temporada
 
-![Status do Projeto](https://img.shields.io/badge/Status-Em_Desenvolvimento-yellow)
+![Status do Projeto](https://img.shields.io/badge/Status-Desenvolvido-green)
 ![Python](https://img.shields.io/badge/Python-3.14-blue)
 ![Django](https://img.shields.io/badge/Django-6.0-green)
 
