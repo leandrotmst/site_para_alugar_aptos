@@ -29,8 +29,11 @@
             <h3 class="text-xl font-bold mb-4">Simule sua estadia</h3>
             <div class="space-y-4">
                 <label class="block text-sm font-medium text-gray-700">Check-in / Check-out</label>
-                <input type="text" id="checkin" placeholder="Data de entrada" class="w-full border-gray-300 rounded-lg p-2 border">
-                <input type="text" id="checkout" placeholder="Data de saída" class="w-full border-gray-300 rounded-lg p-2 border">
+                  <input type="text" id="checkin" value="{{ request.GET.checkin }}" placeholder="Data de entrada" 
+                     class="w-full border-gray-300 rounded-lg p-2 border">
+
+                  <input type="text" id="checkout" value="{{ request.GET.checkout }}" placeholder="Data de saída" 
+                     class="w-full border-gray-300 rounded-lg p-2 border">
             </div>
 
             <div id="calculo-container" class="mt-6 p-4 bg-gray-50 rounded-lg hidden">
@@ -88,5 +91,8 @@
 
     flatpickr("#checkin", flatpickrConfig);
     flatpickr("#checkout", flatpickrConfig);
+
+    // Ela executa a função de cálculo assim que a página termina de carregar
+    window.onload = calcularPreco;
 </script>
 {% endblock %}

@@ -61,9 +61,10 @@
             <p class="text-gray-600 mb-4 flex-grow">
     {{ apartamento.descricao|safe }}
 </p>
-            <a href="{% url 'apartamento:detalhe' apartamento.id %}" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition-colors">
-                Ver Disponibilidade
-            </a>
+            <a href="{% url 'apartamento:detalhe' apartamento.id %}?{{ request.GET.urlencode }}" 
+   class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition-colors">
+    Ver Disponibilidade
+</a>
         </div>
     </div>
     {% empty %}
