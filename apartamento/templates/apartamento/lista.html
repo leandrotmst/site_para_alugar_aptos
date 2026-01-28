@@ -5,6 +5,44 @@
     <h1 class="text-4xl font-bold text-blue-900 mb-4">Encontre seu refúgio na praia</h1>
     <p class="text-gray-600 text-lg">Apartamentos exclusivos para momentos inesquecíveis.</p>
 </div>
+<div class="bg-white p-6 rounded-xl shadow-md mb-8 border border-gray-100">
+  <form method="GET" action="{% url 'apartamento:busca' %}" class="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
+      <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-1">Onde?</label>
+          <input type="text" name="termo" value="{{ request.GET.termo }}" placeholder="Nome ou descrição..." class="w-full border-gray-300 rounded-lg p-2 border focus:ring-blue-500 focus:border-blue-500">
+      </div>
+
+      <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-1">Check-in</label>
+          <input type="text" id="search_checkin" name="checkin" value="{{ request.GET.checkin }}" placeholder="Entrada" class="w-full border-gray-300 rounded-lg p-2 border focus:ring-blue-500 focus:border-blue-500">
+      </div>
+
+      <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-1">Check-out</label>
+          <input type="text" id="search_checkout" name="checkout" value="{{ request.GET.checkout }}" placeholder="Saída" class="w-full border-gray-300 rounded-lg p-2 border focus:ring-blue-500 focus:border-blue-500">
+      </div>
+
+      <div class="flex gap-2">
+          <div class="flex-1">
+              <label class="block text-sm font-semibold text-gray-700 mb-1">Hóspedes</label>
+              <input type="number" name="hospedes" value="{{ request.GET.hospedes|default:2 }}" min="1" class="w-full border-gray-300 rounded-lg p-2 border focus:ring-blue-500 focus:border-blue-500">
+          </div>
+          <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-blue-700 transition h-[42px]">
+              Buscar
+          </button>
+      </div>
+  </form>
+</div>  
+<script>
+    const searchConfig = {
+        locale: "pt",
+        dateFormat: "Y-m-d",
+        minDate: "today",
+    };
+
+    flatpickr("#search_checkin", searchConfig);
+    flatpickr("#search_checkout", searchConfig);
+</script>
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
     {% for apartamento in apartamentos %}
@@ -16,18 +54,17 @@
             {% else %}
                 <div class="w-full h-full bg-gray-200 flex items-center justify-center text-gray-400">Sem foto</div>
             {% endif %}
-            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-blue-800 font-bold shadow-sm">
-                R$ {{ apartamento.preco_diaria }}/dia
-            </div>
         </a>
 
         <div class="p-6 flex flex-col flex-grow">
             <h3 class="text-xl font-bold text-gray-800 mb-2">{{ apartamento.nome }}</h3>
-            <p class="text-gray-600 mb-4 flex-grow">{{ apartamento.descricao|truncatewords:20 }}</p>
-            
-            <a href="{% url 'apartamento:detalhe' apartamento.id %}" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition-colors">
-                Ver Disponibilidade
-            </a>
+            <p class="text-gray-600 mb-4 flex-grow">
+    {{ apartamento.descricao|safe }}
+</p>
+            <a href="{% url 'apartamento:detalhe' apartamento.id %}?{{ request.GET.urlencode }}" 
+   class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition-colors">
+    Ver Disponibilidade
+</a>
         </div>
     </div>
     {% empty %}

@@ -1,6 +1,12 @@
 from django.contrib import admin
 
 from . import models
+from .models import Foto
+
+
+class FotoInLine(admin.TabularInline):
+    model = Foto
+    extra = 3
 
 
 class IndisponibilidadeInline(admin.TabularInline):
@@ -12,7 +18,7 @@ class IndisponibilidadeInline(admin.TabularInline):
 
 class ApartamentoAdmin(admin.ModelAdmin):
     list_display = ["nome", "descricao", "preco_diaria"]
-    inlines = [IndisponibilidadeInline]
+    inlines = [IndisponibilidadeInline, FotoInLine]
 
 
 admin.site.register(models.Apartamento, ApartamentoAdmin)
